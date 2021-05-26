@@ -1,1 +1,11 @@
-<p>post-create works!</p>
+<mat-card>
+  <mat-form-field>
+    <input matInput rows="6" [(ngModel)]="enteredTitle" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput rows="6" [(ngModel)]="enteredContent" />
+  </mat-form-field>
+  <button mat-raised-button color="accent" (click)="onAddPost()">
+    Save Post
+  </button>
+</mat-card>
