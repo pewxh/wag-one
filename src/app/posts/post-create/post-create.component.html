@@ -20,13 +20,13 @@
         name="content"
         ngModel
         #content="ngModel"
-        placeholder="Blog Content"
+        placeholder="Post something interesting."
         required
       ></textarea>
       <mat-error *ngIf="content.invalid">{{
         "Please add some content. "
       }}</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="accent" type="submit">Save Post</button>
+    <button mat-raised-button color="accent" type="submit">Save Blog</button>
   </form>
 </mat-card>

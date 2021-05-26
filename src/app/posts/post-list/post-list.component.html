@@ -4,6 +4,18 @@
       {{ post.title }}
     </mat-expansion-panel-header>
     {{ post.content }}
+    <mat-action-row>
+      <!-- <button mat-button color="primary">Edit <mat-icon>edit</mat-icon></button>
+      <button mat-button color="warn">
+        Remove <mat-icon>delete</mat-icon>
+      </button> -->
+      <button mat-mini-fab color="primary" aria-label="edit">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-mini-fab color="warn" aria-label="delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="mat-body-1 nopost" *ngIf="posts.length === 0">No Posts Yet.</p>
+<p class="mat-body-1 nopost" *ngIf="posts.length === 0">No Stories Yet :(</p>
