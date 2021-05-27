@@ -19,9 +19,20 @@ export class PostsService {
         this.postUpdated.next([...this.posts]);
       });
   }
-  addPost(title: string, content: string) {
-    this.posts.push({ id: null, title: title, content: content });
-    this.postUpdated.next([...this.posts]);
+  addPost(id: string, title: string, content: string) {
+    const post: Post = {
+      id: id,
+      title: title,
+      content: content,
+    };
+
+    this.http
+      .post<{ message: string }>('http://localhost:3000/api/posts', post)
+      .subscribe((resp) => {
+        console.log(resp.message);
+        this.posts.push(post);
+        this.postUpdated.next([...this.posts]);
+      });
   }
   getPostUpdatedListener() {
     return this.postUpdated.asObservable();
