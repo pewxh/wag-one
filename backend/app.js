@@ -2,9 +2,23 @@ const express = require("express");
 // const bodyParser = require("body-parser");
 const app = express();
 // app.use(bodyParser.json());
+const mongoose = require("mongoose");
 
 const Post = require("./models/posts");
+
 app.use(express.json());
+
+mongoose
+  .connect(
+    "mongodb+srv://pewxh:M58qUsupX2v6kQF@wag-1.xrklo.mongodb.net/wag1?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("DB connected.");
+  })
+  .catch(() => {
+    console.log("DB connection failed.");
+  });
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
