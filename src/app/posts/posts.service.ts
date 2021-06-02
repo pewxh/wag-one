@@ -47,5 +47,12 @@ export class PostsService {
   getPostUpdatedListener() {
     return this.postUpdated.asObservable();
   }
+
+  deletePost(id: string) {
+    this.http.delete('http://localhost:3000/api/posts/' + id).subscribe(() => {
+      console.log('Deleted Post');
+    });
+  }
+
   constructor(private http: HttpClient) {}
 }

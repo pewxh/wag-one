@@ -27,4 +27,9 @@ export class PostListComponent implements OnInit, OnDestroy {
     //Add 'implements OnDestroy' to the class.
     this.postsSub.unsubscribe();
   }
+
+  onDelete(id: string) {
+    // console.log('Delete Button Pressed ');
+    this.postsService.deletePost(id);
+  }
 }

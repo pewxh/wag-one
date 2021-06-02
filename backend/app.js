@@ -10,7 +10,8 @@ app.use(express.json());
 
 mongoose
   .connect(
-    "mongodb+srv://pewxh:M58qUsupX2v6kQF@wag-1.xrklo.mongodb.net/wag1?retryWrites=true&w=majority"
+    "mongodb+srv://pewxh:M58qUsupX2v6kQF@wag-1.xrklo.mongodb.net/wag1?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
     console.log("DB connected.");
@@ -41,12 +42,19 @@ app.post("/api/posts", (req, res, next) => {
     message: "Post Added Successfuly",
   });
 });
-app.use("/api/posts", (req, res, next) => {
+app.get("/api/posts", (req, res, next) => {
   Post.find().then((documents) => {
     res.status(200).json({
       message: "Post Fetched Succesfully",
       posts: documents,
     });
+  });
+});
+
+app.delete("/api/posts/:id", (req, res, next) => {
+  Post.deleteOne({ _id: req.params.id }).then((result) => {
+    console.log(result);
+    res.status(200).json({ message: "Post Deleted" });
   });
 });
 

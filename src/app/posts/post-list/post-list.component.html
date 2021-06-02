@@ -12,7 +12,12 @@
       <button mat-mini-fab color="primary" aria-label="edit">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-mini-fab color="warn" aria-label="delete">
+      <button
+        mat-mini-fab
+        color="warn"
+        aria-label="delete"
+        (click)="onDelete(post.id)"
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </mat-action-row>
