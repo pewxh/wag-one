@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { PostListComponent } from './posts/post-list/post-list.component';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { PostListComponent } from './posts/post-list/post-list.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
