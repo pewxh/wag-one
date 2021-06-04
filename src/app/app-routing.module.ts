@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'create',
     component: PostCreateComponent,
   },
+  {
+    path: 'create/:postId',
+    component: PostCreateComponent,
+  },
 ];
 
 @NgModule({

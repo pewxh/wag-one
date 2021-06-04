@@ -59,6 +59,8 @@ export class PostsService {
       this.postUpdated.next([...this.posts]);
     });
   }
-
+  getPost(id: string) {
+    return { ...this.posts.find((p) => p.id === id) };
+  }
   constructor(private http: HttpClient) {}
 }

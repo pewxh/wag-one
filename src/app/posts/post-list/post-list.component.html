@@ -9,9 +9,14 @@
       <button mat-button color="warn">
         Remove <mat-icon>delete</mat-icon>
       </button> -->
-      <button mat-mini-fab color="primary" aria-label="edit">
+      <a
+        mat-mini-fab
+        color="primary"
+        aria-label="edit"
+        [routerLink]="['/edit', post.id]"
+      >
         <mat-icon>edit</mat-icon>
-      </button>
+      </a>
       <button
         mat-mini-fab
         color="warn"
