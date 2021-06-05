@@ -69,9 +69,9 @@ app.get("/api/posts", (req, res, next) => {
 });
 app.get("/api/posts/:id", (req, res, next) => {
   Post.findById(req.params.id).then((post) => {
-    if (post) req.status(200).json(post);
+    if (post) res.status(200).json(post);
     else
-      req.status(404).json({
+      res.status(404).json({
         message: "Post Not Found",
       });
   });
