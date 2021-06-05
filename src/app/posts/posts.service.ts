@@ -29,9 +29,9 @@ export class PostsService {
         this.postUpdated.next([...this.posts]);
       });
   }
-  addPost(id: string, title: string, content: string) {
+  addPost(title: string, content: string) {
     const post: Post = {
-      id: id,
+      id: null,
       title: title,
       content: content,
     };
@@ -61,6 +61,23 @@ export class PostsService {
   }
   getPost(id: string) {
     return { ...this.posts.find((p) => p.id === id) };
+  }
+
+  updatePost(id: string, title: string, content: string) {
+    const post: Post = {
+      id: id,
+      title: title,
+      content: content,
+    };
+    this.http
+      .put('http://localhost:3000/api/posts/' + id, post)
+      .subscribe((response) => {
+        const updatedPosts = [...this.posts];
+        const oldPostIdx = updatedPosts.findIndex((p) => p.id === post.id);
+        updatedPosts[oldPostIdx] = post;
+        this.posts = updatedPosts;
+        this.postUpdated.next([...this.posts]);
+      });
   }
   constructor(private http: HttpClient) {}
 }

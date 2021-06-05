@@ -12,17 +12,26 @@ import { PostsService } from '../posts.service';
 export class PostCreateComponent implements OnInit {
   private mode = 'create';
   private postId: string;
-  private post: Post;
+  post: Post;
   enteredTitle = '';
   enteredContent = '';
-  onAddPost(form: NgForm) {
+  onSave(form: NgForm) {
     if (form.invalid) return;
-    const post: Post = {
-      id: null,
-      title: form.value.title,
-      content: form.value.content,
-    };
-    this.postsService.addPost(post['id'], post['title'], post['content']);
+    // const post: Post = {
+    //   id: null,
+    //   title: form.value.title,
+    //   content: form.value.content,
+    // };
+    // this.postsService.addPost(post['id'], post['title'], post['content']);
+    if (this.mode === 'create')
+      this.postsService.addPost(form.value.title, form.value.content);
+    else {
+      this.postsService.updatePost(
+        this.postId,
+        form.value.title,
+        form.value.content
+      );
+    }
     form.resetForm();
   }
   constructor(
