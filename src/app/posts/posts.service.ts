@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from './post.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostsService {
+  constructor(private http: HttpClient, private router: Router) {}
   private posts: Post[] = [];
   private postUpdated = new Subject<Post[]>();
   getPosts() {
@@ -46,6 +48,7 @@ export class PostsService {
         // console.log(resp.postId);
         this.posts.push(post);
         this.postUpdated.next([...this.posts]);
+        this.router.navigate(['']);
       });
   }
   getPostUpdatedListener() {
@@ -79,7 +82,7 @@ export class PostsService {
         updatedPosts[oldPostIdx] = post;
         this.posts = updatedPosts;
         this.postUpdated.next([...this.posts]);
+        this.router.navigate(['/']);
       });
   }
-  constructor(private http: HttpClient) {}
 }

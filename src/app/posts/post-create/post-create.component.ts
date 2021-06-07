@@ -15,6 +15,7 @@ export class PostCreateComponent implements OnInit {
   post: Post;
   enteredTitle = '';
   enteredContent = '';
+  isLoading = false;
   onSave(form: NgForm) {
     if (form.invalid) return;
     // const post: Post = {
@@ -23,6 +24,7 @@ export class PostCreateComponent implements OnInit {
     //   content: form.value.content,
     // };
     // this.postsService.addPost(post['id'], post['title'], post['content']);
+    this.isLoading = true;
     if (this.mode === 'create')
       this.postsService.addPost(form.value.title, form.value.content);
     else {
@@ -44,7 +46,13 @@ export class PostCreateComponent implements OnInit {
       if (paramMap.has('postId')) {
         this.mode = 'edit';
         this.postId = paramMap.get('postId');
+        //
+        this.isLoading = true;
+        //
         this.postsService.getPost(this.postId).subscribe((postData) => {
+          //
+          this.isLoading = false;
+          //
           this.post = {
             id: postData._id,
             title: postData.title,
