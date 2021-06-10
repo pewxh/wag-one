@@ -14,6 +14,17 @@
       />
       <mat-error *ngIf="title.invalid">{{ "Please add a title" }}</mat-error>
     </mat-form-field>
+    <div>
+      <button
+        mat-button
+        color="accent"
+        type="button"
+        (click)="imgUpload.click()"
+      >
+        Upload Image
+      </button>
+      <input type="file" #imgUpload />
+    </div>
     <mat-form-field>
       <textarea
         matInput
@@ -28,6 +39,7 @@
         "Please add some content. "
       }}</mat-error>
     </mat-form-field>
+
     <button mat-raised-button color="accent" type="submit">Save Blog</button>
   </form>
 </mat-card>
